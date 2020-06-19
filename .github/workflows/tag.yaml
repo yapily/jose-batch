@@ -18,7 +18,7 @@ jobs:
         uses: qcastel/github-actions-maven-cmd@master
         env:
           DOCKER_REGISTRY_ID: registry.hub.docker.com
-          DOCKER_REGISTRY_USERNAME: qcastel
+          DOCKER_REGISTRY_USERNAME: yapily
           DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
         with:
           maven-args: "clean install -DskipTests jib:build -s .github/settings.xml"
