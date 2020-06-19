@@ -1,0 +1,3 @@
+spring:
+  batch:
+    initialize-schema: always

@@ -1,0 +1,20 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5435/jose-batch-db-example
+    username: local
+    password: local
+
+
+jose-batch:
+  chunk-size: 100
+  page-size: 10
+  table: jose_user
+  id: id
+  fields:
+    - name
+    - email
+
+jose-database:
+  keys-path: file:/tmp/keys/
+  encryption-method: A128CBC-HS256
+  token-format: JWS_JWE

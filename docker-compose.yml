@@ -1,0 +1,14 @@
+version: '3'
+services:
+  jose-batch-db-example:
+    container_name: jose-batch-db-example
+    image: postgres:9.6.9
+    ports:
+      - "5435:5432"
+    hostname: jose-batch-db-example
+    environment:
+      - POSTGRES_PASSWORD=local
+      - POSTGRES_USER=local
+      - POSTGRES_DB=jose-batch-db-example
+    volumes:
+      - ./db/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql

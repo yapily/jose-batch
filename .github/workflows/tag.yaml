@@ -1,0 +1,24 @@
+name: publish
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    name: Publish binaries
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install xmllint and zip
+        run: sudo apt-get -y install libxml2-utils zip
+      - name: Build
+        uses: qcastel/github-actions-maven-cmd@master
+        env:
+          DOCKER_REGISTRY_ID: registry.hub.docker.com
+          DOCKER_REGISTRY_USERNAME: qcastel
+          DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+        with:
+          maven-args: "clean install -DskipTests jib:build -s .github/settings.xml"

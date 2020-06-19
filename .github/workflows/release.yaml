@@ -1,0 +1,54 @@
+name: release version
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Check Copyright
+        uses: qcastel/github-actions-maven-cmd@master
+        with:
+          maven-args: "license:check"
+
+      - name: Build and Test
+        uses: qcastel/github-actions-maven-cmd@master
+        with:
+          maven-args: "clean install"
+
+      - name: Temporarily disable "include administrators" branch protection
+        uses: benjefferies/branch-protection-bot@master
+        if: always()
+        with:
+          access-token: ${{ secrets.BOT_GITHUB_REPO_ACCESS_TOKEN }}
+          owner: yapily
+          enforce_admins: false
+          repo: jose-database
+
+      - name: Release
+        uses: qcastel/github-actions-maven-release@master
+        with:
+
+          git-release-bot-name: "bot-yapily"
+          git-release-bot-email: "bot@yapily.com"
+
+          access-token: ${{ secrets.BOT_GITHUB_REPO_ACCESS_TOKEN }}
+          skip-perform: true
+
+      - name: Enable "include administrators" branch protection
+        uses: benjefferies/branch-protection-bot@master
+        if: always()
+        with:
+          access-token: ${{ secrets.BOT_GITHUB_REPO_ACCESS_TOKEN }}
+          owner: yapily
+          repo: jose-database
+
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
