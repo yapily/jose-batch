@@ -173,7 +173,7 @@
 					<to>
 						<image>registry.hub.docker.com/qcastel/jose-batch</image>
 						<tags>
-							<tag>${project.parent.version}</tag>
+							<tag>${project.version}</tag>
 							<tag>latest</tag>
 						</tags>
 					</to>
