@@ -171,7 +171,7 @@
 						<image>qcastel/docker-alpine-with-bash:0.3</image>
 					</from>
 					<to>
-						<image>registry.hub.docker.com/qcastel/jose-batch</image>
+						<image>registry.hub.docker.com/yapily/jose-batch</image>
 						<tags>
 							<tag>${project.version}</tag>
 							<tag>latest</tag>
