@@ -11,31 +11,19 @@ package com.yapily.jose.batch;
 
 import com.yapily.jose.batch.config.JoseBatchConfigurationProperties;
 import com.yapily.jose.batch.models.JoseEntity;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.jdbc.core.RowMapper;
+import org.springframework.batch.item.database.ItemSqlParameterSourceProvider;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
+public class JoseEntityItemSqlParameterSourceProvider implements ItemSqlParameterSourceProvider<JoseEntity> {
 
-@Slf4j
-public class JoseEntityRowMapper implements RowMapper<JoseEntity> {
+    private JoseBatchConfigurationProperties configuration;
 
-    private final JoseBatchConfigurationProperties config;
-
-    public JoseEntityRowMapper(JoseBatchConfigurationProperties config) {
-        this.config = config;
+    public JoseEntityItemSqlParameterSourceProvider(JoseBatchConfigurationProperties configuration) {
+        this.configuration = configuration;
     }
 
     @Override
-    public JoseEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
-        JoseEntity joseEntity = new JoseEntity();
-
-        joseEntity.setId(rs.getLong(config.getId()));
-        for(String field: config.getFields()) {
-            joseEntity.getJwtFields().put(field, rs.getString(field));
-        }
-        log.debug("Mapped Json Entity: {}");
-
-        return joseEntity;
+    public SqlParameterSource createSqlParameterSource(JoseEntity item) {
+        return new JoseEntitySqlParameterSource(configuration, item);
     }
 }

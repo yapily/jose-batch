@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class JobCompletionNotificationListener extends JobExecutionListenerSupport {
+public class JoseBatchJobCompletionNotificationListener extends JobExecutionListenerSupport {
 
     @Override
     public void afterJob(JobExecution jobExecution) {

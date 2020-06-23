@@ -19,6 +19,7 @@ public class JoseEntityItemPreparedStatementSetter implements ItemPreparedStatem
 
     @Override
     public void setValues(JoseEntity item, PreparedStatement preparedStatement) throws SQLException {
+
         int i;
         for(i = 0; i < item.getJwtFields().size(); i++) {
             preparedStatement.setString(i, item.getJwtFields().get(i));

@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5435/jose-batch-db-example
+    url: jdbc:postgresql://localhost:5434/yapily-template-db
     username: local
     password: local
 
@@ -8,11 +8,10 @@ spring:
 jose-batch:
   chunk-size: 100
   page-size: 10
-  table: jose_user
+  table: yapily_user
   id: id
   fields:
     - name
-    - email
 
 jose-database:
   keys-path: file:/tmp/keys/
