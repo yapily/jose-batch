@@ -28,7 +28,7 @@ public class JoseEntityItemProcessor implements ItemProcessor<JoseEntity, JoseEn
 
     @Override
     public JoseEntity process(final JoseEntity joseEntity) throws Exception {
-
+        log.info("Start processing entity {}", joseEntity.getId());
         joseEntity.setJwtFields(
                 joseEntity.getJwtFields()
                         .entrySet().stream()
@@ -38,7 +38,7 @@ public class JoseEntityItemProcessor implements ItemProcessor<JoseEntity, JoseEn
                                         attributeEncryptor.convertToEntityAttribute(e.getValue()))
                         ))
         );
-
+        log.info("Done processing entity {}", joseEntity.getId());
         return joseEntity;
     }
 }

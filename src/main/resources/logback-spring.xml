@@ -45,7 +45,7 @@
         <logger additivity="false" level="INFO" name="org.springframework">
             <appender-ref ref="ASYNC-FULL-STDOUT-NOJSON"/>
         </logger>
-        <logger additivity="false" level="TRACE" name="com.yapily">
+        <logger additivity="false" level="DEBUG" name="com.yapily">
             <appender-ref ref="ASYNC-FULL-STDOUT-NOJSON"/>
         </logger>
         <root level="INFO">

@@ -7,7 +7,7 @@ spring:
 
 jose-batch:
   chunk-size: 100
-  page-size: 10
+  page-size: 100
   table: yapily_user
   id: id
   fields:
@@ -15,5 +15,7 @@ jose-batch:
 
 jose-database:
   keys-path: file:/tmp/keys/
-  encryption-method: A128CBC-HS256
+  encryption-method: A256CBC-HS512
   token-format: JWS_JWE
+  jwe-algorithm: RSA-OAEP-256
+  jws-algorithm: RS256
