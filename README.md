@@ -35,6 +35,7 @@ You can find the latest Docker image on Docker Hub: https://hub.docker.com/r/yap
 - `jose-database.tokenFormat`: Specify the format for the encrypted fields: `JWS`, `JWE`, `JWE_JWS`, `JWS_JWE`
 - `jose-batch.chunk-size`: Specify the number of entries for the batch utility to write in the database update query
 - `jose-batch.page-size`: Specify the number of entries for the batch utility to read in the database read query
+- `jose-batch.table`: Specify the table name for the batch utility to use in the database
 - `jose-batch.id`: Specify the column id for the batch utility to use in the database
 - `jose-batch.fields`: Specify the list of the fields for the batch utility to re-encrypt
 - `spring.datasource.url`: Specify the PostgreSQL datasource url used by Spring. Here is an example: `jdbc:postgresql://$YourDatabaseHostname:$YourDatabasePort/$YourDatabaseName`
@@ -57,7 +58,7 @@ env:
     - name: jose-batch.id
       value: "$YourTableIDFieldName"
     - name: jose-batch.fields
-      value: "$YourEncryptedFieldName"
+      value: "$YourListOfEncryptedFieldNames"
     - name: spring.datasource.url
       value: jdbc:postgresql://$YourDatabaseHostname:$YourDatabasePort/$YourDatabaseName
     - name: spring.datasource.username
