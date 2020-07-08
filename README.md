@@ -15,7 +15,7 @@ This utility is written in Java using Spring batch but is packaged as a Docker i
 
 ## The database field encryption format
 
-The fields in your database must be formatted as JWTs. The batch utility support different format of JWTS:
+The fields in your database must be formatted as JWTs. The batch utility support different format of JWTs:
 
 - JWS: Json Web Signing
 - JWE: Json Web Encrypting 
