@@ -36,7 +36,7 @@ You can find the latest Docker image on Docker Hub: https://hub.docker.com/r/yap
 - `jose-batch.chunk-size`: Specify the number of entries for the batch utility to write in the database update query
 - `jose-batch.page-size`: Specify the number of entries for the batch utility to read in the database read query
 - `jose-batch.table`: Specify the table name for the batch utility to use in the database
-- `jose-batch.id`: Specify the column id for the batch utility to use in the database
+- `jose-batch.id`: Specify the ID column of your table. This is required for updating rows.
 - `jose-batch.fields`: Specify the list of the fields for the batch utility to re-encrypt
 - `spring.datasource.url`: Specify the PostgreSQL datasource url used by Spring. Here is an example: `jdbc:postgresql://$YourDatabaseHostname:$YourDatabasePort/$YourDatabaseName`
 - `spring.datasource.username`: Specify the Spring database username
