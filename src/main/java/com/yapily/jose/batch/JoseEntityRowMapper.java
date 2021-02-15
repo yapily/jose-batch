@@ -30,7 +30,7 @@ public class JoseEntityRowMapper implements RowMapper<JoseEntity> {
     public JoseEntity mapRow(ResultSet rs, int rowNum) throws SQLException {
         JoseEntity joseEntity = new JoseEntity();
 
-        joseEntity.setId(rs.getLong(config.getId()));
+        joseEntity.setId(rs.getString(config.getId()));
         for(String field: config.getFields()) {
             joseEntity.getJwtFields().put(field, rs.getString(field));
         }

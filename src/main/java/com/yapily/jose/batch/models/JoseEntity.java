@@ -25,7 +25,7 @@ import java.util.Map;
 @NoArgsConstructor
 public class JoseEntity {
 
-    private Long id;
+    private String id;
 
     private Map<String, String> jwtFields = new HashMap<>();
 }

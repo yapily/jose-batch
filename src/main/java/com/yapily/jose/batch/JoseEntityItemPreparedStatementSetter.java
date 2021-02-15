@@ -24,6 +24,6 @@ public class JoseEntityItemPreparedStatementSetter implements ItemPreparedStatem
         for(i = 0; i < item.getJwtFields().size(); i++) {
             preparedStatement.setString(i, item.getJwtFields().get(i));
         }
-        preparedStatement.setLong(i++, item.getId());
+        preparedStatement.setString(i++, item.getId());
     }
 }
