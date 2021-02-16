@@ -35,6 +35,7 @@ public class JoseBatchConfigurationProperties {
 
     private String table ;
     private String id ;
+    private String idFilter ;
     private List<String> fields;
 
     private String updateSQL;

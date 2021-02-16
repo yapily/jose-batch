@@ -10,6 +10,7 @@ jose-batch:
   page-size: 100
   table: yapily_user
   id: id
+  id-filter: ${jose-batch.id}::text
   fields:
     - name
 
