@@ -39,8 +39,11 @@ jobs:
           git-release-bot-name: "bot-yapily"
           git-release-bot-email: "bot@yapily.com"
 
-          access-token: ${{ secrets.BOT_GITHUB_REPO_ACCESS_TOKEN }}
-          skip-perform: true
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+          docker-registry-id: registry.hub.docker.com
+          docker-registry-username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          docker-registry-password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
       - name: Enable "include administrators" branch protection
         uses: benjefferies/branch-protection-bot@master
