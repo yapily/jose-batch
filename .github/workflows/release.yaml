@@ -45,6 +45,8 @@ jobs:
           docker-registry-username: ${{ secrets.DOCKER_HUB_USERNAME }}
           docker-registry-password: ${{ secrets.DOCKER_HUB_PASSWORD }}
 
+          maven-args: "-Dmaven.javadoc.skip=true -DskipTests -DskipITs -Dmaven.deploy.skip=true"
+
       - name: Enable "include administrators" branch protection
         uses: benjefferies/branch-protection-bot@master
         if: always()
