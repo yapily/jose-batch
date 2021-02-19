@@ -18,7 +18,11 @@ import java.util.Optional;
 public class JoseBatchApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(JoseBatchApplication.class, args);
+		System.exit(
+				SpringApplication.exit(
+						SpringApplication.run(JoseBatchApplication.class, args)
+				)
+		);
 	}
 
 }
