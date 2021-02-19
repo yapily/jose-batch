@@ -15,6 +15,7 @@ import com.yapily.jose.batch.models.JoseEntity;
 import com.yapily.jose.database.JoseDatabaseAttributeConverter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.item.ItemProcessor;
+import org.springframework.util.StringUtils;
 
 import java.text.ParseException;
 import java.util.stream.Collectors;
@@ -37,9 +38,9 @@ public class JoseEntityItemProcessor implements ItemProcessor<JoseEntity, JoseEn
                         .collect(Collectors.toMap(
                                 e -> e.getKey(),
                                 e -> {
-                                    if (e.getValue() == null) {
-                                        log.warn("Value is null for field {}", e.getKey());
-                                        return null;
+                                    if (StringUtils.hasText(e.getValue())) {
+                                        log.warn("Value is null for field {} of entity", e.getKey(), joseEntity.getId());
+                                        return "";
                                     }
                                     try {
                                         JWTParser.parse(e.getValue());
