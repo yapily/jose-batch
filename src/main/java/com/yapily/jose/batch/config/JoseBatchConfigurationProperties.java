@@ -41,6 +41,7 @@ public class JoseBatchConfigurationProperties {
     private String updateSQL;
     private Integer chunkSize;
     private Integer pageSize;
+    private Integer threads;
 
     public String getUpdateSQL() {
         if (updateSQL == null) {

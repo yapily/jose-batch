@@ -137,7 +137,7 @@ public class JoseBatchConfiguration {
                 .processor(processor)
                 .writer(writer)
                 .taskExecutor(taskExecutor)
-                .throttleLimit(20)
+                .throttleLimit(config.getThreads())
                 .build();
     }
 

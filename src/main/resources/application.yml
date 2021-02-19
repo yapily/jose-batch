@@ -5,3 +5,4 @@ spring:
 
 jose-batch:
   id-filter: ${jose-batch.id}::text
+  threads: 1

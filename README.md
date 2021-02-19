@@ -35,6 +35,7 @@ You can find the latest Docker image on Docker Hub: https://hub.docker.com/r/yap
 - `jose-database.tokenFormat`: Specify the format for the encrypted fields: `JWS`, `JWE`, `JWE_JWS`, `JWS_JWE`
 - `jose-batch.chunk-size`: Specify the number of entries for the batch utility to write in the database update query
 - `jose-batch.page-size`: Specify the number of entries for the batch utility to read in the database read query
+- `jose-batch.threads`: Define the number of threads in parallel for each chunk of jobs. Default is 1
 - `jose-batch.table`: Specify the table name for the batch utility to use in the database
 - `jose-batch.id`: Specify the ID column of your table. This is required for updating rows.
 - `jose-batch.id-filter`: Specify the way you want to filter your id. For uuid, it needs to be `id::text`. This is required for updating rows.
@@ -53,6 +54,8 @@ env:
     - name: jose-batch.chunk-size
       value: "100"
     - name: jose-batch.page-size
+      value: "10"
+    - name: jose-batch.threads
       value: "10"
     - name: jose-batch.table
       value: "$yourTableThatHasTheEncryptionField"
