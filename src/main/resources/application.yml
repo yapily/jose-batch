@@ -1,3 +1,7 @@
 spring:
   batch:
     initialize-schema: always
+
+
+jose-batch:
+  id-filter: ${jose-batch.id}::text
