@@ -29,6 +29,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.core.task.SimpleAsyncTaskExecutor;
+import org.springframework.core.task.TaskExecutor;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
@@ -111,6 +114,13 @@ public class JoseBatchConfiguration {
     }
 
     @Bean
+    @Primary
+    public TaskExecutor taskExecutor() {
+        return new SimpleAsyncTaskExecutor("spring_batch");
+    }
+
+
+    @Bean
     /**
      * Job step that bundle all the previous reader, processor and writer.
      * The goal is to repackage every row fields of the database with the new keys
@@ -119,12 +129,15 @@ public class JoseBatchConfiguration {
                       DataSource dataSource,
                       PostgresPagingQueryProvider pagingQueryProvider,
                       JdbcPagingItemReader<JoseEntity> reader,
-                      JoseEntityItemProcessor processor) {
+                      JoseEntityItemProcessor processor,
+                                                        TaskExecutor taskExecutor) {
         return stepBuilderFactory.get("repackageJWTSFieldsAfterKeyRotationStep")
                 .<JoseEntity, JoseEntity> chunk(config.getChunkSize())
                 .reader(reader)
                 .processor(processor)
                 .writer(writer)
+                .taskExecutor(taskExecutor)
+                .throttleLimit(20)
                 .build();
     }
 
