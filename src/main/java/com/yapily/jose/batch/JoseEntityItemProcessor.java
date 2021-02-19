@@ -38,7 +38,7 @@ public class JoseEntityItemProcessor implements ItemProcessor<JoseEntity, JoseEn
                         .collect(Collectors.toMap(
                                 e -> e.getKey(),
                                 e -> {
-                                    if (StringUtils.hasText(e.getValue())) {
+                                    if (!StringUtils.hasText(e.getValue())) {
                                         log.warn("Value is null for field {} of entity", e.getKey(), joseEntity.getId());
                                         return "";
                                     }
