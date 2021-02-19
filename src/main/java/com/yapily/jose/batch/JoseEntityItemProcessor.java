@@ -38,6 +38,7 @@ public class JoseEntityItemProcessor implements ItemProcessor<JoseEntity, JoseEn
                                 e -> e.getKey(),
                                 e -> {
                                     if (e.getValue() == null) {
+                                        log.warn("Value is null for field {}", e.getKey());
                                         return null;
                                     }
                                     try {

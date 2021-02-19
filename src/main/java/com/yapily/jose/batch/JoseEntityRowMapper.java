@@ -34,7 +34,7 @@ public class JoseEntityRowMapper implements RowMapper<JoseEntity> {
         for(String field: config.getFields()) {
             joseEntity.getJwtFields().put(field, rs.getString(field));
         }
-        log.debug("Mapped Json Entity: {}");
+        log.info("Mapped Json Entity: {}");
 
         return joseEntity;
     }

@@ -100,7 +100,7 @@ public class JoseBatchConfiguration {
      * The write is the one saying how to update the row back to the database
      */
     public JdbcBatchItemWriter<JoseEntity> writer(DataSource dataSource) {
-        log.debug("Update SQL we will used to update a row: {}", config.getUpdateSQL());
+        log.info("Update SQL we will used to update a row: {}", config.getUpdateSQL());
         return new JdbcBatchItemWriterBuilder<JoseEntity>()
                 .itemSqlParameterSourceProvider(new JoseEntityItemSqlParameterSourceProvider(config))
                 .assertUpdates(true)
