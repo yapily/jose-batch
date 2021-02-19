@@ -47,8 +47,13 @@ public class JoseEntityItemProcessor implements ItemProcessor<JoseEntity, JoseEn
                                         log.warn("Entity '{}' wasn't encrypted/signed.", joseEntity.getId(), exception);
                                         return attributeEncryptor.convertToDatabaseColumn(e.getValue());
                                     }
-                                    return attributeEncryptor.convertToDatabaseColumn(
-                                            attributeEncryptor.convertToEntityAttribute(e.getValue()));
+                                    try {
+                                        return attributeEncryptor.convertToDatabaseColumn(
+                                                attributeEncryptor.convertToEntityAttribute(e.getValue()));
+                                    } catch (Exception exception) {
+                                        log.warn("Entity '{}' couldn't be re-encrypted.", joseEntity.getId(), exception);
+                                        return e.getValue();
+                                    }
                                 }
                         ))
         );
