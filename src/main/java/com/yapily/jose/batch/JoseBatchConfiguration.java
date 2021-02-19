@@ -103,7 +103,7 @@ public class JoseBatchConfiguration {
         log.info("Update SQL we will used to update a row: {}", config.getUpdateSQL());
         return new JdbcBatchItemWriterBuilder<JoseEntity>()
                 .itemSqlParameterSourceProvider(new JoseEntityItemSqlParameterSourceProvider(config))
-                .assertUpdates(true)
+                .assertUpdates(false)
                 .sql(config.getUpdateSQL())
                 .itemPreparedStatementSetter(new JoseEntityItemPreparedStatementSetter())
                 .dataSource(dataSource)
