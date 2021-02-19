@@ -48,7 +48,7 @@ public class JoseBatchConfigurationProperties {
                     getFields().stream()
                             .map(f -> f + " = :" + f)
                             .collect(Collectors.joining(", "))
-                    + " WHERE " + getId() + " = :" + getId() + "";
+                    + " WHERE " + getIdFilter() + " = :" + getId() + "";
         }
         return updateSQL;
     }
