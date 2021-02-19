@@ -37,10 +37,13 @@ public class JoseEntityItemProcessor implements ItemProcessor<JoseEntity, JoseEn
                         .collect(Collectors.toMap(
                                 e -> e.getKey(),
                                 e -> {
+                                    if (e.getValue() == null) {
+                                        return null;
+                                    }
                                     try {
                                         JWTParser.parse(e.getValue());
-                                    } catch (ParseException parseException) {
-                                        log.warn("Entity '{}' wasn't encrypted/signed.", joseEntity.getId());
+                                    } catch (Exception exception) {
+                                        log.warn("Entity '{}' wasn't encrypted/signed.", joseEntity.getId(), exception);
                                         return attributeEncryptor.convertToDatabaseColumn(e.getValue());
                                     }
                                     return attributeEncryptor.convertToDatabaseColumn(
